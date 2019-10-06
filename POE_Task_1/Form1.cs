@@ -37,9 +37,10 @@ namespace POE_Task_1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+           buttons = new Button[mapWidth,mapHeight];
+            m = new Map(UnitNum, mapHeight, mapWidth);
             m.GenerateBattleField();
             PlaceButtons();
-            m = new Map(UnitNum, mapHeight, mapWidth);
         }
 
         public void PlaceButtons() // Method to fill the Map with buttons to create the battlefield 
@@ -48,9 +49,9 @@ namespace POE_Task_1
 
             Size btnSize = new Size(30, 30);
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < mapWidth; i++)
             {
-                for (int j = 0; j < 20; j++)
+                for (int j = 0; j < mapHeight; j++)
                 {
                     Button btn = new Button();
 
@@ -105,9 +106,9 @@ namespace POE_Task_1
                 }
             }
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < mapWidth; i++)
             {
-                for (int j = 0; j < 20; j++)
+                for (int j = 0; j < mapHeight; j++)
                 {
                     GbBoxMap.Controls.Add(buttons[i, j]);
                 }

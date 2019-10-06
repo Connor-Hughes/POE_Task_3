@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,7 +81,7 @@ namespace POE_Task_1
         public override void
             Move(int type) // all the move functions for the units once they have spawned and the the Buildings themselves
         {
-            if (Health > MaxHealth * 0.25)
+            if (Health > MaxHealth * 0.5)
             {
                 if (ClosestUnit is MelleUnit)
                 {
@@ -132,15 +133,86 @@ namespace POE_Task_1
         public override void
             Combat(int type) // the method to get the units to fight their enemies and shows them who to fight
         {
-            if (ClosestUnit is MelleUnit)
+            foreach (Units u in units)
             {
-                MelleUnit M = (MelleUnit) ClosestUnit;
-                M.Health -= Attack;
-            }
-            else if (ClosestUnit is RangedUnit)
-            {
-                RangedUnit R = (RangedUnit) ClosestUnit;
-                R.Health -= Attack;
+                if (u is MelleUnit)
+                {
+                    MelleUnit m = (MelleUnit) u;
+
+                    if (m.posX == posX -1 && m.posY == posY -1)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posY && m.posY == posY - 1)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posX + 1 && m.posY == posY - 1)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posX - 1 && m.posY == posY)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posX + 1 && m.posY == posY)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posX - 1 && m.posY == posY + 1)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posX && m.posY == posY + 1)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posX + 1 && m.posY == posY + 1)
+                    {
+                        m.health -= 1;
+                    }
+                 
+
+                }
+                if (u is RangedUnit)
+                {
+                    RangedUnit m = (RangedUnit)u;
+
+                    if (m.posX == posX - 1 && m.posY == posY - 1)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posY && m.posY == posY - 1)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posX + 1 && m.posY == posY - 1)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posX - 1 && m.posY == posY)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posX + 1 && m.posY == posY)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posX - 1 && m.posY == posY + 1)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posX && m.posY == posY + 1)
+                    {
+                        m.health -= 1;
+                    }
+                    else if (m.posX == posX + 1 && m.posY == posY + 1)
+                    {
+                        m.health -= 1;
+                    }
+
+
+                }
             }
         }
 
@@ -195,7 +267,7 @@ namespace POE_Task_1
             }
 
             //Checks to see if they are below 25% health so they move rather than attacking
-            if (Health > MaxHealth * 0.25)
+            if (Health > MaxHealth * 0.5)
             {
                 if (distance <= atkRange)
                 {
