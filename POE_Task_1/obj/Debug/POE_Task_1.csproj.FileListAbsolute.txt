@@ -1,0 +1,13 @@
+D:\GADE6111\POE Task 1\POE_Task_1\POE_Task_1\obj\Debug\POE_Task_1.csprojAssemblyReference.cache
+D:\GADE6111\POE Task 1\POE_Task_1\POE_Task_1\obj\Debug\POE_Task_1.Form1.resources
+D:\GADE6111\POE Task 1\POE_Task_1\POE_Task_1\obj\Debug\POE_Task_1.Properties.Resources.resources
+D:\GADE6111\POE Task 1\POE_Task_1\POE_Task_1\obj\Debug\POE_Task_1.csproj.GenerateResource.cache
+D:\GADE6111\POE Task 1\POE_Task_1\POE_Task_1\obj\Debug\POE_Task_1.csproj.CoreCompileInputs.cache
+D:\GADE6111\POE Task 1\POE_Task_1\POE_Task_1\bin\Debug\POE_Task_1.exe.config
+D:\GADE6111\POE Task 1\POE_Task_1\POE_Task_1\bin\Debug\POE_Task_1.exe
+D:\GADE6111\POE Task 1\POE_Task_1\POE_Task_1\bin\Debug\POE_Task_1.pdb
+D:\GADE6111\POE Task 1\POE_Task_1\POE_Task_1\obj\Debug\POE_Task_1.exe
+D:\GADE6111\POE Task 1\POE_Task_1\POE_Task_1\obj\Debug\POE_Task_1.pdb
+D:\GADE6111\POE Task 1\POE_Task_1\POE_Task_1\bin\Debug\Newtonsoft.Json.dll
+D:\GADE6111\POE Task 1\POE_Task_1\POE_Task_1\bin\Debug\Newtonsoft.Json.xml
+D:\GADE6111\POE Task 1\POE_Task_1\POE_Task_1\obj\Debug\POE_Task_1.csproj.CopyComplete
