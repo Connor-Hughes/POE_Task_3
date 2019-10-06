@@ -19,13 +19,16 @@ namespace POE_Task_1
 
     public partial class Form1 : Form
     {
-        
-        public Button[,] buttons = new Button[20,20]; //button array that will be used for the grid
+
+        private int mapWidth = 20;
+        private int mapHeight = 20;
+
+        public Button[,] buttons; //button array that will be used for the grid
         
         static int UnitNum = 8;
         public int Round = 1;
 
-        Map m = new Map(UnitNum);
+        private Map m;
         
         public Form1()
         {
@@ -36,6 +39,7 @@ namespace POE_Task_1
         {
             m.GenerateBattleField();
             PlaceButtons();
+            m = new Map(UnitNum, mapHeight, mapWidth);
         }
 
         public void PlaceButtons() // Method to fill the Map with buttons to create the battlefield 
@@ -340,6 +344,33 @@ namespace POE_Task_1
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void btnSetSize_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                mapHeight = Convert.ToInt32(txtBoxHeight.Text);
+                mapWidth = Convert.ToInt32(txtBoxWidth.Text);
+
+                if (mapHeight < 10 || mapWidth < 10)
+                {
+                    MessageBox.Show("Please enter values that are greater than 9X9");
+                }
+                else
+                {
+                    m = new Map(UnitNum, mapHeight, mapWidth);
+
+                    buttons = new Button[mapWidth,mapHeight];
+
+                    m.GenerateBattleField();
+                    PlaceButtons();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Please enter valid Numbers Only");
+            }
         }
     }
 }

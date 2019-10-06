@@ -150,10 +150,11 @@
             // 
             this.btnSetSize.Location = new System.Drawing.Point(1002, 137);
             this.btnSetSize.Name = "btnSetSize";
-            this.btnSetSize.Size = new System.Drawing.Size(100, 22);
+            this.btnSetSize.Size = new System.Drawing.Size(100, 28);
             this.btnSetSize.TabIndex = 11;
             this.btnSetSize.Text = "Set Size";
             this.btnSetSize.UseVisualStyleBackColor = true;
+            this.btnSetSize.Click += new System.EventHandler(this.btnSetSize_Click);
             // 
             // Form1
             // 

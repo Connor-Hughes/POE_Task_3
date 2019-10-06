@@ -16,28 +16,34 @@ namespace POE_Task_1
     {
         private int mapWidth = 20;
         private int mapHeight = 20;
-        public string[,] map = new string[20, 20];
+        public string[,] map;
         Random Rd = new Random();
 
         
         public List<Building> buildings = new List<Building>();
         public List<ResourceBuilding> diamondMines = new List<ResourceBuilding>();
         public List<FactoryBuilding> barracks = new List<FactoryBuilding>();
-        public Building[,] buildingMap = new Building[20, 20];
+        public Building[,] buildingMap;
 
         public List<Units> units = new List<Units>();
         public List<Units> rangedUnit = new List<Units>();
         public List<Units> melleUnit = new List<Units>();
         public List<WizardUnit> wizardUnits = new List<WizardUnit>();
-        public  Units[,] uniMap = new Units[20,20];
+        public Units[,] uniMap;
 
 
         int BuildingNum;
 
-        public Map(int UnitN = 0)
+        public Map(int UnitN, int MapH, int MapW)
         {
-            BuildingNum = UnitN;
+            mapHeight = MapH;
+            mapWidth = MapW;
 
+            buildingMap = new Building[mapWidth,mapHeight];
+            uniMap= new Units[mapWidth,mapHeight];
+            map = new string[mapWidth,mapHeight];
+
+            BuildingNum = UnitN;
         }
 
         public  void GenerateBattleField() // method to allow the random number of units, including the ranged and the melee units
@@ -94,13 +100,13 @@ namespace POE_Task_1
             {
                 for (int i = 0; i < diamondMines.Count; i++)
                 {
-                    int xPos = Rd.Next(0, 20);
-                    int yPos = Rd.Next(0, 20);
+                    int xPos = Rd.Next(0, mapHeight);
+                    int yPos = Rd.Next(0, mapWidth);
 
                     while (xPos == diamondMines[i].PosX && yPos == diamondMines[i].PosY && xPos == barracks[i].PosX && yPos == barracks[i].PosY)
                     {
-                        xPos = Rd.Next(0, 20);
-                        yPos = Rd.Next(0, 20);
+                        xPos = Rd.Next(0, mapHeight);
+                        yPos = Rd.Next(0, mapWidth);
                     }
 
                     u.PosX = xPos;
@@ -114,13 +120,13 @@ namespace POE_Task_1
             {
                 for (int i = 0; i < barracks.Count; i++)
                 {
-                    int xPos = Rd.Next(0, 20);
-                    int yPos = Rd.Next(0, 20);
+                    int xPos = Rd.Next(0, mapHeight);
+                    int yPos = Rd.Next(0, mapWidth);
 
                     while (xPos == barracks[i].PosX && yPos == barracks[i].PosY && xPos == diamondMines[i].PosX && yPos == diamondMines[i].PosY)
                     {
-                        xPos = Rd.Next(0, 20);
-                        yPos = Rd.Next(0, 20);
+                        xPos = Rd.Next(0, mapHeight);
+                        yPos = Rd.Next(0, mapWidth);
                     }
 
                     u.PosX = xPos;
@@ -144,13 +150,13 @@ namespace POE_Task_1
             {
                 for (int i = 0; i < wizardUnits.Count; i++)
                 {
-                    int xPos = Rd.Next(0, 20);
-                    int yPos = Rd.Next(0, 20);
+                    int xPos = Rd.Next(0, mapHeight);
+                    int yPos = Rd.Next(0, mapWidth);
 
                     while (xPos == diamondMines[i].PosX && yPos == diamondMines[i].PosY && xPos == barracks[i].PosX && yPos == barracks[i].PosY && xPos == wizardUnits[i].PosX && yPos == wizardUnits[i].PosY)
                     {
-                        xPos = Rd.Next(0, 20);
-                        yPos = Rd.Next(0, 20);
+                         xPos = Rd.Next(0, mapHeight);
+                         yPos = Rd.Next(0, mapWidth);
                     }
 
                     u.PosX = xPos;
@@ -166,9 +172,9 @@ namespace POE_Task_1
 
         public void Populate() // method used to populate the map full of units
         {
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < mapWidth; i++)
             {
-                for (int j = 0; j < 20; j++)
+                for (int j = 0; j < mapHeight; j++)
                 {
                     map[i, j] = " ";
                 }
@@ -197,9 +203,9 @@ namespace POE_Task_1
         public void PlaceBuildings() // method to place buildings randomly throughout the map and spawn the random units 
         {
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < mapWidth; i++)
             {
-                for (int j = 0; j < 20; j++)
+                for (int j = 0; j < mapHeight; j++)
                 {
                     buildingMap[i, j] = null;
                 }
