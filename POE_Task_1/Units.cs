@@ -12,7 +12,8 @@ namespace POE_Task_1
     enum  Faction //factions for both the Melee and the Ranged unit
     {
         Hero, 
-        Villain
+        Villain,
+        Neutral 
     }
 
     [Serializable]
@@ -53,8 +54,6 @@ namespace POE_Task_1
         public abstract Units Position();
 
         public abstract string ToString();
-
-        public abstract Building BuildingPosition();
 
         public Units(string N, int x, int y, int hp, int spd, int atk, int attRange, Faction fac, string sym, bool iatk )
         {

@@ -133,6 +133,28 @@ namespace POE_Task_1
                             posY--;
                         }
                     }
+                    else if (ClosestUnit is WizardUnit)
+                    {
+                        WizardUnit closestUnitW = (WizardUnit)ClosestUnit;
+
+                        if (closestUnitW.PosX > posX && PosX < 20)
+                        {
+                            posX++;
+                        }
+                        else if (closestUnitW.PosX < posX && posX > 0)
+                        {
+                            posX--;
+                        }
+
+                        if (closestUnitW.PosY > posY && PosY < 20)
+                        {
+                            posY++;
+                        }
+                        else if (closestUnitW.PosY < posY && posY > 0)
+                        {
+                            posY--;
+                        }
+                    }
 
                 }
                 else
@@ -222,6 +244,11 @@ namespace POE_Task_1
                     RangedUnit R = (RangedUnit) ClosestUnit;
                     R.Health -= Attack;
                 }
+                else if (ClosestUnit is WizardUnit)
+                {
+                    WizardUnit Wu = (WizardUnit)ClosestUnit;
+                    Wu.Health -= Attack;
+                }
             }
             else if (type == 1)
             {
@@ -234,7 +261,6 @@ namespace POE_Task_1
                 {
                     ResourceBuilding RB = (ResourceBuilding) ClosestBuilding;
                     RB.Health -= Attack;
-
                 }
             }
         }
@@ -364,13 +390,24 @@ namespace POE_Task_1
 
 
                 }
-                else
+                else if(b is MelleUnit)
                 {
                     MelleUnit Rb = (MelleUnit)b;
                     if (FactionType != b.factionType)
                     {
                         Xdis = Math.Abs(PosX - Rb.PosX) * (PosX - Rb.PosX);
                         Ydis = Math.Abs(PosY - Rb.PosY) * (PosY - Rb.PosY);
+
+                        Distance = Math.Round(Math.Sqrt(Xdis + Ydis), 0);
+                    }
+                }
+                else if (b is WizardUnit)
+                {
+                    WizardUnit Wu = (WizardUnit)b;
+                    if (FactionType != b.factionType)
+                    {
+                        Xdis = Math.Abs(PosX - Wu.PosX) * (PosX - Wu.PosX);
+                        Ydis = Math.Abs(PosY - Wu.PosY) * (PosY - Wu.PosY);
 
                         Distance = Math.Round(Math.Sqrt(Xdis + Ydis), 0);
                     }
@@ -387,7 +424,7 @@ namespace POE_Task_1
             return Target;
         }
 
-        public override Building BuildingPosition() //Method to check the positions of the buildings
+        public Building BuildingPosition() //Method to check the positions of the buildings
         {
             int Xdis = 0, Ydis = 0;
             double Distance = 1000;

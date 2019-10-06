@@ -14,9 +14,12 @@ namespace POE_Task_1
 
     class Map
     {
+        private int mapWidth = 20;
+        private int mapHeight = 20;
         public string[,] map = new string[20, 20];
         Random Rd = new Random();
 
+        
         public List<Building> buildings = new List<Building>();
         public List<ResourceBuilding> diamondMines = new List<ResourceBuilding>();
         public List<FactoryBuilding> barracks = new List<FactoryBuilding>();
@@ -25,6 +28,7 @@ namespace POE_Task_1
         public List<Units> units = new List<Units>();
         public List<Units> rangedUnit = new List<Units>();
         public List<Units> melleUnit = new List<Units>();
+        public List<WizardUnit> wizardUnits = new List<WizardUnit>();
         public  Units[,] uniMap = new Units[20,20];
 
 
@@ -38,54 +42,52 @@ namespace POE_Task_1
 
         public  void GenerateBattleField() // method to allow the random number of units, including the ranged and the melee units
         {
-
             for (int i = 0; i < BuildingNum; i++)
             {
-                if (Rd.Next(0, 2) == 0)
+                int UnitNum = Rd.Next(0, 2);
+                string UnitName;
+                if (UnitNum == 0)
                 {
-                    ResourceBuilding DiamondMine = new ResourceBuilding(0, 0, 100, Faction.Hero, "◘", 10);
-                    diamondMines.Add(DiamondMine);
+                    UnitName = "Melee";
                 }
                 else
                 {
-                    int UnitNum = Rd.Next(0, 2);
-                    string UnitName;
-                    if (UnitNum == 0)
-                    {
-                        UnitName = "Melee";
-                    }
-                    else
-                    {
-                        UnitName = "Ranged";
-                    }
-
-                    FactoryBuilding barrack = new FactoryBuilding(0, 0, 100, Faction.Hero, "┬", Rd.Next(3, 10), UnitName);
-                    barracks.Add(barrack);
+                    UnitName = "Ranged";
                 }
+
+                ResourceBuilding DiamondMine = new ResourceBuilding(0, 0, 100, Faction.Hero, "◘", 10);
+                diamondMines.Add(DiamondMine);
+
+                FactoryBuilding barrack = new FactoryBuilding(0, 0, 100, Faction.Hero, "┬", Rd.Next(3, 10), UnitName);
+                barracks.Add(barrack);
+
             }
+
             for (int i = 0; i < BuildingNum; i++)
             {
-                if (Rd.Next(0, 2) == 0)
+                int UnitNum = Rd.Next(0, 2);
+                string UnitName;
+                if (UnitNum == 0)
                 {
-                    ResourceBuilding DiamondMine = new ResourceBuilding(0, 0, 100, Faction.Villain, "◘", 10);
-                    diamondMines.Add(DiamondMine);
+                    UnitName = "Melee";
                 }
                 else
                 {
-                    int UnitNum = Rd.Next(0, 2);
-                    string UnitName;
-                    if (UnitNum == 0)
-                    {
-                        UnitName = "Melee";
-                    }
-                    else
-                    {
-                        UnitName = "Ranged";
-                    }
-
-                    FactoryBuilding barrack = new FactoryBuilding(0, 0, 100, Faction.Villain, "┬", Rd.Next(3, 10), UnitName);
-                    barracks.Add(barrack);
+                    UnitName = "Ranged";
                 }
+
+                ResourceBuilding DiamondMine = new ResourceBuilding(0, 0, 100, Faction.Villain, "◘", 10);
+                diamondMines.Add(DiamondMine);
+
+                FactoryBuilding barrack =
+                    new FactoryBuilding(0, 0, 100, Faction.Villain, "┬", Rd.Next(3, 10), UnitName);
+                barracks.Add(barrack);
+            }
+
+            for (int i = 0; i < BuildingNum; i++)
+            {
+               WizardUnit wizard = new WizardUnit("Wizard", 0, 0, 20, 1, 3, 2, Faction.Neutral, "≈", false );
+               wizardUnits.Add(wizard);
             }
 
             foreach (ResourceBuilding u in diamondMines)
@@ -137,6 +139,27 @@ namespace POE_Task_1
                     u.SpawnPointX = u.PosX - 1;
                 }
             }
+
+            foreach (WizardUnit u in wizardUnits)
+            {
+                for (int i = 0; i < wizardUnits.Count; i++)
+                {
+                    int xPos = Rd.Next(0, 20);
+                    int yPos = Rd.Next(0, 20);
+
+                    while (xPos == diamondMines[i].PosX && yPos == diamondMines[i].PosY && xPos == barracks[i].PosX && yPos == barracks[i].PosY && xPos == wizardUnits[i].PosX && yPos == wizardUnits[i].PosY)
+                    {
+                        xPos = Rd.Next(0, 20);
+                        yPos = Rd.Next(0, 20);
+                    }
+
+                    u.PosX = xPos;
+                    u.PosY = yPos;
+                    uniMap[u.PosX, u.PosX] = (Units)u;
+                }
+                units.Add(u);
+            }
+
             Populate();
             PlaceBuildings();
         }
@@ -148,14 +171,6 @@ namespace POE_Task_1
                 for (int j = 0; j < 20; j++)
                 {
                     map[i, j] = " ";
-                }
-            }
-
-            for (int i = 0; i < 20; i++)
-            {
-                for (int j = 0; j < 20; j++)
-                {
-                    uniMap[i, j] = null;
                 }
             }
 
@@ -171,6 +186,10 @@ namespace POE_Task_1
             foreach (Units u in melleUnit)
             {
                 map[u.posY, u.posX] = "M";
+            }
+            foreach (WizardUnit u in wizardUnits)
+            {
+                map[u.posY, u.posX] = "W";
             }
 
         }

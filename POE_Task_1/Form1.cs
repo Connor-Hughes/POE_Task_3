@@ -64,12 +64,19 @@ namespace POE_Task_1
                     }
                     else if (m.map[i, j] == "M")
                     {
-                        Debug.Print("Found meleeunit");
                         btn.Text = "#";
                         btn.Name = m.uniMap[i, j].ToString();
                         btn.Click += MyButtonCLick;
 
                         btn.BackColor = m.uniMap[i, j].factionType == Faction.Hero ? Color.Chartreuse : Color.Crimson;
+                    }
+                    else if (m.map[i, j] == "W")
+                    {
+                        btn.Text = "≈";
+                        btn.Name = m.uniMap[i, j].ToString();
+                        btn.Click += MyButtonCLick;
+
+                        btn.BackColor = Color.BlueViolet;
                     }
                     else if (m.map[i, j] == "FB")
                     {
