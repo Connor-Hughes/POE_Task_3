@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Runtime.InteropServices;
 
 namespace POE_Task_1
@@ -177,6 +178,25 @@ namespace POE_Task_1
                 for (int j = 0; j < mapHeight; j++)
                 {
                     map[i, j] = " ";
+                }
+            }
+
+            foreach (Units u in units ) ////
+            {
+                if (u is RangedUnit)
+                {
+                    RangedUnit r = (RangedUnit) u;
+                    uniMap[r.PosY, r.PosX] = u;
+                }
+                else if (u is MelleUnit)
+                {
+                    MelleUnit m = (MelleUnit)u;
+                    uniMap[m.PosY, m.PosX] = u;
+                }
+                else if (u is WizardUnit)
+                {
+                    WizardUnit w = (WizardUnit) u;
+                    uniMap[w.PosY, w.PosX] = u;
                 }
             }
 
