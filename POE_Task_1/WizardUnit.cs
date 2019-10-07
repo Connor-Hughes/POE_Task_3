@@ -10,7 +10,7 @@ namespace POE_Task_1
     [Serializable]
     class WizardUnit : Units
     {
-        public int PosX
+        public int PosX      //properties for the New Wizard unit 
         {
             get { return posX; }
             set { base.posX = value; }
@@ -71,7 +71,7 @@ namespace POE_Task_1
         Random r = new Random();
         Units ClosestUnit;
 
-        public WizardUnit(string N, int x, int y, int hp, int spd, int atk, int attRange, Faction fac, string sym,
+        public WizardUnit(string N, int x, int y, int hp, int spd, int atk, int attRange, Faction fac, string sym, // constructor
             bool iatk)
             : base(N, x, y, hp, spd, atk, attRange, fac, sym, iatk)
         {
@@ -135,7 +135,7 @@ namespace POE_Task_1
         {
             foreach (Units u in units)
             {
-                if (u is MelleUnit)
+                if (u is MelleUnit) //setting the attack variables if the oposition is a melee unit
                 {
                     MelleUnit m = (MelleUnit) u;
 
@@ -174,7 +174,7 @@ namespace POE_Task_1
                  
 
                 }
-                if (u is RangedUnit)
+                if (u is RangedUnit)  //setting the attack variables if the oposition is a Ranged unit
                 {
                     RangedUnit m = (RangedUnit)u;
 
@@ -266,7 +266,7 @@ namespace POE_Task_1
                 enemyType = 1;
             }
 
-            //Checks to see if they are below 25% health so they move rather than attacking
+            //Checks to see if they are below 50% health so they move rather than attacking
             if (Health > MaxHealth * 0.5)
             {
                 if (distance <= atkRange)

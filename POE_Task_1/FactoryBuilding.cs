@@ -9,7 +9,7 @@ namespace POE_Task_1
     [Serializable]
     class FactoryBuilding : Building
     {
-        private string unitType;
+        private string unitType;  // all the properties for the factory buildings
 
         public string UnitType
         {
@@ -81,7 +81,7 @@ namespace POE_Task_1
         }
 
 
-        public FactoryBuilding(int x, int y, int hp, Faction fac, string sym, int Pspeed, string uType) :
+        public FactoryBuilding(int x, int y, int hp, Faction fac, string sym, int Pspeed, string uType) : //constructor
             base(x, y, hp, fac, sym)
         {
             ProductionSPeed = Pspeed;
@@ -107,7 +107,7 @@ namespace POE_Task_1
         }
 
 
-        public override string ToString()
+        public override string ToString() //ToString method to let the user know what type of unit they are looking at, the HP, the atk damage, what resource the building is producing etc
         {
             return " Pekka Hut: X: " + posX
                                 + " Y: " + posY

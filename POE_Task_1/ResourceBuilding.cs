@@ -10,7 +10,7 @@ namespace POE_Task_1
     [Serializable]
     class ResourceBuilding : Building
     {
-        public enum ResourceType
+        public enum ResourceType //enumeration for the diffarent type of resources
         {
             Diamonds,
             Coal
@@ -52,7 +52,7 @@ namespace POE_Task_1
         private ResourceType Resource;
 
 
-        public ResourceBuilding(int x, int y, int hp, Faction fac, string sym, int ResPerRound) :
+        public ResourceBuilding(int x, int y, int hp, Faction fac, string sym, int ResPerRound) : //constructor
             base(x, y, hp, fac, sym)
         {
             GeneratePerRound = ResPerRound;
@@ -70,7 +70,7 @@ namespace POE_Task_1
             }
         }
 
-        public void GenerateResources()
+        public void GenerateResources() // telling ther resource buildings when they can produce resources
         {
             if (ResourcePool > 0)
             {
@@ -81,7 +81,7 @@ namespace POE_Task_1
 
 
 
-        public override string ToString()
+        public override string ToString() //ToString method to let the user know what type of unit they are looking at, the HP, the atk damage, what resource the building is producing etc
         {
             return " Mine: X: " + posX
                    + " Y: " + posY

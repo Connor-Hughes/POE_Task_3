@@ -35,7 +35,7 @@ namespace POE_Task_1
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e) // when the map loads, these buttons and method calls will take place to populate the map 
         {
            buttons = new Button[mapWidth,mapHeight];
             m = new Map(UnitNum, mapHeight, mapWidth);
@@ -65,7 +65,7 @@ namespace POE_Task_1
                         btn.Name = m.uniMap[i, j].ToString();
                         btn.Click += MyButtonCLick;
 
-                        btn.BackColor = m.uniMap[i, j].factionType == Faction.Hero ? Color.Chartreuse : Color.Crimson;
+                        btn.BackColor = m.uniMap[i, j].factionType == Faction.Hero ? Color.Chartreuse : Color.Crimson; // the color for the ranged and melee units
                     }
                     else if (m.map[i, j] == "M")
                     {
@@ -73,7 +73,7 @@ namespace POE_Task_1
                         btn.Name = m.uniMap[i, j].ToString();
                         btn.Click += MyButtonCLick;
 
-                        btn.BackColor = m.uniMap[i, j].factionType == Faction.Hero ? Color.Chartreuse : Color.Crimson;
+                        btn.BackColor = m.uniMap[i, j].factionType == Faction.Hero ? Color.Chartreuse : Color.Crimson; // the color for the ranged and melee units
                     }
                     else if (m.map[i, j] == "W")
                     {
@@ -115,7 +115,7 @@ namespace POE_Task_1
             }
         }
 
-        public void MyButtonCLick(object sender, EventArgs e)
+        public void MyButtonCLick(object sender, EventArgs e) // when the button is clicked it will place all the values assigned to each unit
         {
             Button btn = ((Button) sender);
 
@@ -157,7 +157,7 @@ namespace POE_Task_1
             int hero = 0;
             int villian = 0;
 
-            foreach (ResourceBuilding u in m.diamondMines)
+            foreach (ResourceBuilding u in m.diamondMines) // incrementing the hero or villian based on which faction type they belong to
             {
                 if (u.Faction == Faction.Hero)
                 {
@@ -169,7 +169,7 @@ namespace POE_Task_1
                 }
             }
 
-            foreach (FactoryBuilding u in m.barracks)
+            foreach (FactoryBuilding u in m.barracks) // incrementing the hero or villian based on which faction type they belong to
             {
                 if (u.Faction == Faction.Hero)
                 {
@@ -181,7 +181,7 @@ namespace POE_Task_1
                 }
             }
 
-            foreach (Units u in m.units)
+            foreach (Units u in m.units) // incrementing the hero or villian based on which faction type they belong to
             {
                 if (u.factionType == Faction.Hero)
                 {
@@ -194,7 +194,7 @@ namespace POE_Task_1
             }
 
 
-            if (hero > 0 && villian > 0)
+            if (hero > 0 && villian > 0) // telling the resource building when to generate resources
             {
                 foreach (ResourceBuilding Rb in m.diamondMines)
                 {
@@ -347,7 +347,7 @@ namespace POE_Task_1
 
         }
 
-        private void btnSetSize_Click(object sender, EventArgs e)
+        private void btnSetSize_Click(object sender, EventArgs e) // method allowing the user to choose the map size instead of a 20X20 grid
         {
             try
             {
@@ -370,7 +370,7 @@ namespace POE_Task_1
             }
             catch
             {
-                MessageBox.Show("Please enter valid Numbers Only");
+                MessageBox.Show("Please enter valid Numbers Only");  //catch to let the user know if they have entered a non integer variable
             }
         }
     }

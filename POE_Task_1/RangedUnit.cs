@@ -133,7 +133,7 @@ namespace POE_Task_1
                             posY--;
                         }
                     }
-                    else if (ClosestUnit is WizardUnit)
+                    else if (ClosestUnit is WizardUnit) // showing the new wizard who he can attack and when he can attack them
                     {
                         WizardUnit closestUnitW = (WizardUnit)ClosestUnit;
 

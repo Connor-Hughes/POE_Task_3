@@ -8,7 +8,7 @@ namespace POE_Task_1
 {
     [Serializable]
 
-    abstract class Building
+    abstract class Building  // all properties for the buildings
     {
         protected int posX;
 
@@ -25,7 +25,7 @@ namespace POE_Task_1
 
         public abstract string ToString();
 
-        public Building(int x, int y, int hp, Faction fac, string sym)
+        public Building(int x, int y, int hp, Faction fac, string sym) //constructor for the building class
         {
             posX = x;
             posY = y;

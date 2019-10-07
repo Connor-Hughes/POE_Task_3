@@ -84,7 +84,7 @@ namespace POE_Task_1
 
         public override void Move(int type) // all the move functions for the units once they have spawned and the the Buildings themselves
         {
-            if (Health > MaxHealth * 0.25)
+            if (Health > MaxHealth * 0.25) // if the units health is below 25% then he will try to run away
             {
                 if (type == 0)
                 {
@@ -132,7 +132,7 @@ namespace POE_Task_1
                             posY--;
                         }
                     }
-                    else if (ClosestUnit is WizardUnit)
+                    else if (ClosestUnit is WizardUnit) // new wizard unit and telling it when and who he can attack
                     {
                         WizardUnit closestUnitW = (WizardUnit)ClosestUnit;
 
@@ -236,17 +236,17 @@ namespace POE_Task_1
                 if (ClosestUnit is MelleUnit)
                 {
                     MelleUnit M = (MelleUnit) ClosestUnit;
-                    M.Health -= Attack;
+                    M.Health -= Attack;       // checking the health = health + attack 
                 }
                 else if (ClosestUnit is RangedUnit)
                 {
                     RangedUnit R = (RangedUnit) ClosestUnit;
-                    R.Health -= Attack;
+                    R.Health -= Attack; // checking the health = health + attack 
                 }
                 else if (ClosestUnit is WizardUnit)
                 {
                     WizardUnit Wu = (WizardUnit)ClosestUnit;
-                    Wu.Health -= Attack;
+                    Wu.Health -= Attack; // checking the health = health + attack 
                 }
             }
             else if (type == 1)
@@ -254,12 +254,12 @@ namespace POE_Task_1
                 if (ClosestBuilding is FactoryBuilding)
                 {
                     FactoryBuilding Fb = (FactoryBuilding) ClosestBuilding;
-                    Fb.Health -= Attack;
+                    Fb.Health -= Attack; // checking the health = health + attack 
                 }
                 else if (ClosestBuilding is ResourceBuilding)
                 {
                     ResourceBuilding RB = (ResourceBuilding) ClosestBuilding;
-                    RB.Health -= Attack;
+                    RB.Health -= Attack; // checking the health = health + attack 
 
                 }
             }
@@ -268,7 +268,6 @@ namespace POE_Task_1
 
         public override void AttRange(List<Units> uni, List<Building> builds) // checking the range of the building and the units they spawn
         {
-
             units = uni;
             buildings = builds;
 

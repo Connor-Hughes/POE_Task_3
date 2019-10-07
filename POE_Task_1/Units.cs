@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace POE_Task_1
 {
     
-    enum  Faction //factions for both the Melee and the Ranged unit
+    enum  Faction //factions for both the Melee and the Ranged unit and new wizard unit
     {
         Hero, 
         Villain,
@@ -55,7 +55,7 @@ namespace POE_Task_1
 
         public abstract string ToString();
 
-        public Units(string N, int x, int y, int hp, int spd, int atk, int attRange, Faction fac, string sym, bool iatk )
+        public Units(string N, int x, int y, int hp, int spd, int atk, int attRange, Faction fac, string sym, bool iatk ) // constructor
         {
             name = N;
             posX = x;

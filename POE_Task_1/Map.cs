@@ -61,10 +61,10 @@ namespace POE_Task_1
                     UnitName = "Ranged";
                 }
 
-                ResourceBuilding DiamondMine = new ResourceBuilding(0, 0, 100, Faction.Hero, "◘", 10);
+                ResourceBuilding DiamondMine = new ResourceBuilding(0, 0, 100, Faction.Hero, "◘", 10); // setting the values and symbols for the diamond mines
                 diamondMines.Add(DiamondMine);
 
-                FactoryBuilding barrack = new FactoryBuilding(0, 0, 100, Faction.Hero, "┬", Rd.Next(3, 10), UnitName);
+                FactoryBuilding barrack = new FactoryBuilding(0, 0, 100, Faction.Hero, "┬", Rd.Next(3, 10), UnitName); // setting the values and symbols for the barracks
                 barracks.Add(barrack);
 
             }
@@ -92,7 +92,7 @@ namespace POE_Task_1
 
             for (int i = 0; i < BuildingNum; i++)
             {
-               WizardUnit wizard = new WizardUnit("Wizard", 0, 0, 20, 1, 3, 2, Faction.Neutral, "≈", false );
+               WizardUnit wizard = new WizardUnit("Wizard", 0, 0, 15, 1, 3, 1, Faction.Neutral, "≈", false ); //setting values for the new wizard unit
                wizardUnits.Add(wizard);
             }
 
@@ -146,7 +146,7 @@ namespace POE_Task_1
                 }
             }
 
-            foreach (WizardUnit u in wizardUnits)
+            foreach (WizardUnit u in wizardUnits) // placing the wizard units randomly throughout the map
             {
                 for (int i = 0; i < wizardUnits.Count; i++)
                 {
