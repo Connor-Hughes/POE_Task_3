@@ -182,7 +182,7 @@ namespace POE_Task_1
 
             foreach (Units u in units)
             {
-                uniMap[u.posY, u.posX] = u;
+                uniMap[u.posY, u.posX] = u; //////
             }
 
             foreach (Units u in rangedUnit)

@@ -194,7 +194,7 @@ namespace POE_Task_1
             }
 
 
-            if (hero > 0 && villian > 0) // telling the resource building when to generate resources
+            if (hero > 0 && villian > 0) // telling the game when there is only 1 type of unit left then that team is the victor
             {
                 foreach (ResourceBuilding Rb in m.diamondMines)
                 {

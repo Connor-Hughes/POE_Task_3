@@ -367,7 +367,6 @@ namespace POE_Task_1
 
         public override Units Position() //checks the Position of the Buildings and which positions to spawn units
         {
-
             int Xdis = 0, Ydis = 0;
             double Distance = 1000;
             double temp = 1000;
@@ -420,7 +419,6 @@ namespace POE_Task_1
                 }
 
             }
-
             return Target;
         }
 
@@ -433,7 +431,6 @@ namespace POE_Task_1
 
             foreach (Building b in buildings)
             {
-
                 if (b is FactoryBuilding)
                 {
                     FactoryBuilding Fb = (FactoryBuilding)b;
@@ -477,7 +474,7 @@ namespace POE_Task_1
                    + "\nHealth: " + Health
                    + "\nSpeed: " + Speed
                    + "\nAttackDamage: " + Attack
-                   + "AttackRange: " + AtkRange
+                   + " AttackRange: " + AtkRange
                    + "\nFaction: " + FactionType;
         }
     }
