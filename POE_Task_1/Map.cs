@@ -181,11 +181,11 @@ namespace POE_Task_1
                 }
             }
 
-            foreach (Units u in units ) ////
+            foreach (Units u in units) ////
             {
                 if (u is RangedUnit)
                 {
-                    RangedUnit r = (RangedUnit) u;
+                    RangedUnit r = (RangedUnit)u;
                     uniMap[r.PosY, r.PosX] = u;
                 }
                 else if (u is MelleUnit)
@@ -195,7 +195,7 @@ namespace POE_Task_1
                 }
                 else if (u is WizardUnit)
                 {
-                    WizardUnit w = (WizardUnit) u;
+                    WizardUnit w = (WizardUnit)u;
                     uniMap[w.PosY, w.PosX] = u;
                 }
             }
